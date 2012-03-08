@@ -11,7 +11,7 @@ my $sieve = "0" x $n;
 
 for my $i (2 .. $n) {
     next if substr($sieve, $i-1, 1);
-    print "$i\n";
+    #print "$i\n";
     my $k = $n / $i;
     my $mask = ("0" x ($i - 1) . "1") x $k;
     $sieve |= $mask;
