@@ -11,7 +11,7 @@ my $sieve = "";
 
 for my $i (2 .. $n) {
     next if vec($sieve, $i, 1);
-    print "$i\n";
+    # print "$i\n";
     for (my $j = 2 * $i; $j <= $n; $j += $i) {
 	vec($sieve, $j, 1) = 1;
     }
