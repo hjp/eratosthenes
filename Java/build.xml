@@ -1,0 +1,26 @@
+<project name="eratosthenes" default="compile" basedir=".">
+    <description>
+	Sieve of Eratosthenes in Java
+    </description>
+    <property name="src" location="src"/>
+    <property name="classes" location="classes"/>
+
+    <target name="clean">
+	<delete dir="classes"/>
+    </target>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="classes"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="src" destdir="classes" includeantruntime="false" />
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="eratosthenes.jar" basedir="classes"
+	     manifest="manifest.mf" />
+    </target>
+
+</project>
