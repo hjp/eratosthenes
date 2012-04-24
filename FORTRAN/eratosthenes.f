@@ -1,13 +1,13 @@
 C sieve of eratosthenes in FORTRAN IV
-      dimension notprm(1000000)
+      logical notprm(1000000)
       integer t0, t1, t_rate
       call system_clock(t0, t_rate)
       n = 1000000
       do 12, i=2,n
-      if (notprm(i) .eq. 1) go to 11
+      if (notprm(i)) go to 11
 C     write(0,20) i
       do 10, j=2*i,n,i
-      notprm(j) = 1
+      notprm(j) = .true.
    10 continue
    11 continue
    12 continue
