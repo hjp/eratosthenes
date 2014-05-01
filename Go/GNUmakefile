@@ -1,5 +1,2 @@
-eratosthenes: eratosthenes.8
-	8l -o $@ $^
-
-%.8: %.go
-	8g $^
+eratosthenes: eratosthenes.go
+	go build $^
