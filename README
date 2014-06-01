@@ -1,1 +1,5 @@
-Just a test.
+Sieve of Eratosthenes in several languages.
+
+Just the basic algorithm to compare language syntax and performance.
+No fancy algorithmic optimizations allowed, but idiomatic code is
+welcome.
