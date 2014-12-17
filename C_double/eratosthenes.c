@@ -3,7 +3,8 @@
  * This differs from the example in directory ../C by doing all the
  * arithmetic in double instead of int - just to check how much slower
  * it is (on a Core2 Duo using gcc 4.9.1 for i586-linux-gnu about 5
- * times slower)
+ * times slower, but on a Xeon X7460 (gcc 4.7.2, x86_64-linux-gnu) only
+ * about 30%)
  */
 #include <stdio.h>
 #include <string.h>
