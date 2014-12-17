@@ -1,27 +1,42 @@
+#include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
 
-#define N 1000000
+#define N 2000000000
+
+typedef unsigned prime_t;
 
 int main(void) {
-    char sieve[N+1];
     struct timeval t0, t1;
+
+    assert((prime_t)N + 1 > N);
+    assert((prime_t)N * 2 > N);
+    assert((size_t)N == N);
 
     gettimeofday(&t0, NULL);
 
-    for (int i = 2; i <= N; i++) {
+    char *sieve = calloc(N, 1);
+    assert(sieve);
+
+    int found = 0;
+
+    for (prime_t i = 2; i <= N; i++) {
         if (sieve[i]) continue;
+        found++;
+        printf("%d\n", i);
 
         // printf("%d\n", i);
-        for (int j = 2 * i; j <= N; j += i) {
+        for (prime_t j = 2 * i; j <= N; j += i) {
             sieve[j] = 1;
         }
     }
 
     gettimeofday(&t1, NULL);
 
-    printf("%g\n",
+    printf("%d primes found in %g seconds\n",
+           found,
            ((t1.tv_sec - t0.tv_sec) * 1E6 + (t1.tv_usec - t0.tv_usec)) / 1E6);
     return 0;
 }
