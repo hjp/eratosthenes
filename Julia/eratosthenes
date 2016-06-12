@@ -2,29 +2,32 @@
 
 using Formatting
 
+const n = 1_000_000
+
+function sieve(n)
+    notprime = Bool[]
+    nprimes = 0
+
+    for i in 1:n
+        push!(notprime, false)
+    end
+
+    for i in 2:n
+        if notprime[i]
+            continue
+        end
+        nprimes += 1
+        j = 2i
+        while j <= n
+            notprime[j] = true
+            j += i
+        end
+    end
+    return nprimes
+end
+
 t0 = time()
-
-n = 1_000_000
-
-notprime = Bool[]
-nprimes = 0
-
-for i in 1:n
-    push!(notprime, false)
-end
-
-for i in 2:n
-    if notprime[i]
-        continue
-    end
-    nprimes += 1
-    j = 2i
-    while j <= n
-        notprime[j] = true
-        j += i
-    end
-end
-
+nprimes = sieve(n)
 t1 = time()
 printfmtln("found {} primes <= {} in {:.3f} seconds", nprimes, n, t1 - t0)
 
