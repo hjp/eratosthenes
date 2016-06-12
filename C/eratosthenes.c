@@ -1,10 +1,11 @@
 #include <assert.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
 
-#define N 2000000000
+#define N 1000000
 
 typedef unsigned prime_t;
 
@@ -25,7 +26,6 @@ int main(void) {
     for (prime_t i = 2; i <= N; i++) {
         if (sieve[i]) continue;
         found++;
-        printf("%d\n", i);
 
         // printf("%d\n", i);
         for (prime_t j = 2 * i; j <= N; j += i) {
@@ -35,8 +35,9 @@ int main(void) {
 
     gettimeofday(&t1, NULL);
 
-    printf("%d primes found in %g seconds\n",
+    printf("%d primes <= %ju found in %g seconds\n",
            found,
+           (uintmax_t)N,
            ((t1.tv_sec - t0.tv_sec) * 1E6 + (t1.tv_usec - t0.tv_usec)) / 1E6);
     return 0;
 }
