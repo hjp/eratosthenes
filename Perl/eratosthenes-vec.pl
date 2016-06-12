@@ -8,14 +8,16 @@ my $t0 = time;
 my $n = 1_000_000;
 
 my $sieve = "";
+my $nprimes = 0;
 
 for my $i (2 .. $n) {
     next if vec($sieve, $i, 1);
     # print "$i\n";
+    $nprimes++;
     for (my $j = 2 * $i; $j <= $n; $j += $i) {
 	vec($sieve, $j, 1) = 1;
     }
 }
 
 my $t1 = time;
-print $t1 - $t0, "\n";
+printf "found %d primes <= %d in %.3f seconds\n", $nprimes, $n, $t1 - $t0;
