@@ -18,9 +18,11 @@ int main(void) {
 
     gettimeofday(&t0, NULL);
 
+    double nprimes = 0;
     for (double i = 2; i <= N; i++) {
         if (sieve[(int)i]) continue;
 
+        nprimes++;
         // printf("%d\n", i);
         for (double j = 2 * i; j <= N; j += i) {
             sieve[(int)j] = 1;
@@ -29,7 +31,9 @@ int main(void) {
 
     gettimeofday(&t1, NULL);
 
-    printf("%g\n",
+    printf("%g primes <= %g found in %g seconds\n",
+           nprimes,
+           (double)N,
            ((t1.tv_sec - t0.tv_sec) * 1E6 + (t1.tv_usec - t0.tv_usec)) / 1E6);
     return 0;
 }
