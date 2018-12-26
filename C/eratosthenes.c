@@ -38,6 +38,6 @@ int main(void) {
     printf("%d primes <= %ju found in %g seconds\n",
            found,
            (uintmax_t)N,
-           ((t1.tv_sec - t0.tv_sec) * 1E6 + (t1.tv_usec - t0.tv_usec)) / 1E6);
+           ((t1.tv_sec - t0.tv_sec) * 1E6 + (t1.tv_usec - t0.tv_usec)) / 1E6); // sic!
     return 0;
 }

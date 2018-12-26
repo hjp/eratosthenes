@@ -34,6 +34,6 @@ int main(void) {
     printf("%g primes <= %g found in %g seconds\n",
            nprimes,
            (double)N,
-           ((t1.tv_sec - t0.tv_sec) * 1E6 + (t1.tv_usec - t0.tv_usec)) / 1E6);
+           ((t1.tv_sec - t0.tv_sec) * 1E6 + (t1.tv_usec - t0.tv_usec)) / 1E6);  // sic!
     return 0;
 }
