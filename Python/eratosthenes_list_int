@@ -4,11 +4,8 @@ import sys
 
 t0 = time()
 n = int(sys.argv[1]) if len(sys.argv) >= 2 else 1000000
-notprime = []
+notprime = [0] * (n+1)
 found = 0
-
-for i in range(0, n + 1):
-    notprime.append(0)
 
 for i in range(2, n):
     if notprime[i]:
